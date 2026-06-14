@@ -1,28 +1,45 @@
 # Logic Encoder Sitemap Manager
 
-Operator-controlled **XML sitemap generation** for logicencoder.com — blacklist unwanted URLs, schedule regeneration, verify in Search Console, and export/import settings.
+Operator-controlled **XML sitemap generation** for logicencoder.com — content selection, URL blacklist, scheduled regeneration, Search Console verification helpers, and settings import/export.
 
 Private plugin: [logicencoder/logicencoder-sitemap-manager-plugin](https://github.com/logicencoder/logicencoder-sitemap-manager-plugin).
 
 ## Public output
 
-**[logicencoder.com/sitemap-generated.xml](https://logicencoder.com/sitemap-generated.xml)** — referenced from robots.txt and search tools.
+**[logicencoder.com/sitemap-generated.xml](https://logicencoder.com/sitemap-generated.xml)**
 
-No visitor UI — the product is reliable sitemap XML under operator control.
+Referenced from robots.txt and search tools. No visitor-facing UI — the product is reliable, operator-controlled sitemap XML.
 
 ## Admin workspace
 
-**Sitemap Manager** menu: Dashboard, Manage Content, URL List, Blacklist, File Editor, Settings, Statistics, Test & Verify, Activity Log. Dashboard widget for quick status.
+**Sitemap Manager** top-level menu:
+
+| Screen | Purpose |
+|--------|---------|
+| Dashboard | Last run, URL counts, quick actions |
+| Manage Content | Include/exclude post types and taxonomies |
+| URL List | Flat view of emitted URLs |
+| Blacklist | Block paths from ever appearing |
+| File Editor | Syntax-highlighted XML preview |
+| Settings | Change frequency, priority defaults |
+| Statistics | Historical generation stats |
+| Test & Verify | Ping Google/Bing, validate XML |
+| Activity Log | Audit trail of operator actions |
+
+Dashboard widget for one-click regenerate.
 
 ## Automation
 
-- Regenerate on `save_post` when configured
-- WP-Cron scheduled rebuild
-- REST `sitemap-manager/v1/status` and `/generate`
-- WP-CLI: `wp sitemap generate`, `wp sitemap stats`
-- AJAX: test URLs, bulk actions, ping search engines, import/export settings
+- Optional regenerate on **`save_post`**
+- WP-Cron scheduled rebuild (`lsm_cron_regenerate`)
+- **REST** `sitemap-manager/v1/status` and `/generate`
+- **WP-CLI:** `wp sitemap generate`, `wp sitemap stats`
 
-Complements [le-settings-plugin](https://github.com/logicencoder/le-settings-plugin-overview) SEO meta — does not replace it.
+## AJAX actions
+
+Generate sitemap, test individual URLs, save editor theme preference, search posts for inclusion, blacklist management, trigger cron manually, import/export settings JSON, bulk content actions, ping search engines.
+
+Complements [le-settings-plugin](https://github.com/logicencoder/le-settings-plugin-overview) SEO meta — this plugin owns the XML artifact; settings plugin owns robots and meta descriptions.
 
 See [REPOS.md](REPOS.md).
 
