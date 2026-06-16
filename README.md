@@ -41,7 +41,7 @@ Stat cards show **total URLs**, how many **content types** are enabled, **blackl
 
 On first activation the plugin builds an initial sitemap and links you back here.
 
-**Example — first publish to Search Console:** activate → open Dashboard → **Generate Now** → **View Sitemap** → copy the URL into Google Search Console → add the same line to `robots.txt` in File Editor.
+On first publish to Search Console: activate → open Dashboard → **Generate Now** → **View Sitemap** → copy the URL into Google Search Console → add the same line to `robots.txt` in File Editor.
 
 ## Manage Content
 
@@ -51,7 +51,7 @@ Two checkbox grids list every **public post type** and **public taxonomy** (cate
 
 Defaults on a fresh install: **Posts** and **Pages** on; **Categories** on; author archives off.
 
-**Example — add a custom post type:** tick the CPT label → **Save Settings** → Dashboard → **Generate Now** → URL List → filter by type to confirm new archive URLs appeared.
+To add a custom post type, tick the CPT label → **Save Settings** → Dashboard → **Generate Now** → URL List → filter by type to confirm new archive URLs appeared.
 
 ## URL List
 
@@ -65,7 +65,7 @@ When no file exists yet, an empty state links to Dashboard. After generation, a 
 | **Search URLs** | Live text filter on the URL column |
 | **Print** | Browser print of the filtered table |
 
-**Example — confirm a landing page is indexed:** search the slug → open **View** → if missing, check Manage Content and Blacklist, then regenerate.
+To confirm a landing page is indexed, search the slug → open **View** → if missing, check Manage Content and Blacklist, then regenerate.
 
 ## Blacklist
 
@@ -73,7 +73,7 @@ When no file exists yet, an empty state links to Dashboard. After generation, a 
 
 Add by **numeric post ID**, by **pasting a full post URL**, or via **Search & Add** (type two or more characters, pick **Blacklist** on a result). The table shows ID, title, type, link, and **Remove**. Blacklisted items stay out until removed and the sitemap is regenerated.
 
-**Example — hide a staging page:** Blacklist → search the page title → **Blacklist** → Dashboard → **Generate Now** → URL List search proves the URL is gone.
+To hide a staging page, open Blacklist → search the page title → **Blacklist** → Dashboard → **Generate Now** → URL List search proves the URL is gone.
 
 ## File Editor
 
@@ -87,7 +87,7 @@ Add by **numeric post ID**, by **pasting a full post URL**, or via **Search & Ad
 
 Switch tabs, edit the textarea, toggle **Dark Mode** (preference remembered), **Save File** writes to disk — a timestamped backup copy is created beside the original before overwrite.
 
-**Example — wire robots to the sitemap:** File Editor → `robots.txt` → add the `Sitemap:` line pointing at `sitemap-generated.xml` → **Save File** → Test & Verify → fetch `robots.txt`.
+To wire `robots.txt` to the sitemap, open File Editor → `robots.txt` → add the `Sitemap:` line pointing at `sitemap-generated.xml` → **Save File** → Test & Verify → fetch `robots.txt`.
 
 ## Settings
 
@@ -102,7 +102,7 @@ Switch tabs, edit the textarea, toggle **Dark Mode** (preference remembered), **
 
 **Save Settings** applies the schedule and shows the **next scheduled run** when auto-generate is on. With auto-generate enabled, publishing a post or page of an enabled type also triggers a rebuild.
 
-**Example — daily freshness:** enable auto-generate → **Daily** → **Save** → publish a new blog post → Dashboard shows an updated “last generated” time.
+For daily freshness, enable auto-generate → **Daily** → **Save** → publish a new blog post → Dashboard shows an updated “last generated” time.
 
 ## Statistics
 
@@ -114,7 +114,7 @@ Switch tabs, edit the textarea, toggle **Dark Mode** (preference remembered), **
 
 Enter any URL (defaults to the main sitemap) and **Test URL** — result panel shows HTTP status, content-type, and robots header. **Quick Tests** rows link the main sitemap, `robots.txt`, and legacy `sitemap.xml` for side-by-side checks. **Sitemap Validation** reports valid/invalid XML, URL count, or parse errors. **System Information** lists WordPress version, PHP version, site URL, and whether the site root is writable.
 
-**Example — fix a 404 in Search Console:** paste the failing URL → **Test URL** → if 404, fix the post or blacklist → regenerate → retest.
+To fix a 404 reported in Search Console, paste the failing URL → **Test URL** → if 404, fix the post or blacklist → regenerate → retest.
 
 ## Activity log
 
