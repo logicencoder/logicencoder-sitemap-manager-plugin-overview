@@ -146,4 +146,49 @@ See [REPOS.md](REPOS.md).
 
 ---
 
+## Feature examples (two per capability)
+
+#### Dashboard home (operator)
+1. You open **Sitemap Manager → Dashboard** and read total URLs, enabled content types, and time since last generation.
+2. You click **Generate Now** after changing site structure and confirm stat cards update with the new URL total.
+
+#### Manage Content inclusion (operator)
+1. You tick which post types and taxonomies belong in the next build and save before you regenerate.
+2. You enable **author archive pages** when you want `/author/` URLs indexed and disable them when they add noise.
+
+#### URL List audit (operator)
+1. You filter the flat URL table by type or search slug text to confirm a landing page made it into the current file.
+2. You click **View** on a row to open the live page and verify it matches what you expect crawlers to fetch.
+
+#### Blacklist exclusions (operator)
+1. You blacklist a staging page by ID or URL paste so it never appears in the XML even if its post type is enabled.
+2. You remove a blacklist row and regenerate when a previously hidden page is ready for indexing.
+
+#### File Editor (operator)
+1. You add `Sitemap: https://logicencoder.com/sitemap-generated.xml` to **robots.txt** and save with automatic backup.
+2. You switch to the **sitemap-generated.xml** tab to inspect raw urlset output before submitting to Search Console.
+
+#### Settings and auto-generate (operator)
+1. You enable automatic regeneration on **Daily** and read the **next scheduled run** timestamp on save.
+2. You set default **priority** and **change frequency** for posts so new content inherits sensible crawler hints.
+
+#### Statistics and Test & Verify (operator)
+1. You open **Statistics** and read URL breakdown by homepage, posts, pages, tags, and authors.
+2. You paste the live sitemap URL into **Test & Verify** and confirm HTTP 200, content-type, and valid XML parsing.
+
+#### Activity log (operator)
+1. You review who generated, blacklisted, edited files, or cleared logs in the last **100** events.
+2. You correlate log entries with Search Console crawl errors after a structural site change.
+
+#### Dashboard widget (operator)
+1. You read **Sitemap Manager Status** on the wp-admin home screen for URL count and last generated time.
+2. You click **Generate now** from the widget during a quick content push without opening the full Dashboard.
+
+#### Search-engine discovery (outcome)
+1. You submit **sitemap-generated.xml** in Google Search Console and Bing Webmaster Tools after a major publish batch.
+2. You publish a new post of an enabled type with auto-generate on and verify the URL appears in **URL List** after the scheduled rebuild.
+
+
+---
+
 **Made by [Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
