@@ -1,5 +1,7 @@
 # Logic Encoder Sitemap Manager — WordPress plugin
 
+![Logic Encoder Sitemap Manager — generated sitemap XML served on logicencoder.com](assets/sitemap-manager-xml.png)
+
 **Logic Encoder Sitemap Manager** is operator-controlled XML sitemap generation for [logicencoder.com](https://logicencoder.com): pick which post types and taxonomies ship in the index, blacklist sensitive URLs, schedule automatic rebuilds, audit every emitted link, and edit `robots.txt` beside the live sitemap file.
 
 The public artifact is **[logicencoder.com/sitemap-generated.xml](https://logicencoder.com/sitemap-generated.xml)** — submit that URL in Google Search Console and Bing Webmaster Tools. No visitor-facing UI; the product is reliable sitemap XML under your control.
