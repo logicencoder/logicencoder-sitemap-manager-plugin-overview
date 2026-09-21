@@ -120,7 +120,7 @@ To fix a 404 reported in Search Console, paste the failing URL → **Test URL** 
 
 **Activity Log** keeps the last **100** operator events: time, user, action badge, and details. Generations, blacklist edits, settings saves, file edits, and log clears appear here. **Clear Log** wipes the table (the clear action itself is logged).
 
-## What goes into the sitemap
+## Sitemap contents
 
 Each generation writes a single XML urlset at the site root:
 
@@ -146,7 +146,7 @@ See [REPOS.md](REPOS.md).
 
 ---
 
-## Feature examples (two per capability)
+## Operator workflows
 
 #### Dashboard home (operator)
 1. You open **Sitemap Manager → Dashboard** and read total URLs, enabled content types, and time since last generation.
