@@ -1,196 +1,40 @@
-# Logic Encoder Sitemap Manager — WordPress plugin
+# Logic Encoder Sitemap Manager
 
-![Logic Encoder Sitemap Manager — generated sitemap XML served on logicencoder.com](assets/sitemap-manager-xml.png)
+![Logic Encoder Sitemap Manager workspace](assets/sitemap-manager-xml.png)
 
-**Logic Encoder Sitemap Manager** is operator-controlled XML sitemap generation for [logicencoder.com](https://logicencoder.com): pick which post types and taxonomies ship in the index, blacklist sensitive URLs, schedule automatic rebuilds, audit every emitted link, and edit `robots.txt` beside the live sitemap file.
-
-The public artifact is **[logicencoder.com/sitemap-generated.xml](https://logicencoder.com/sitemap-generated.xml)** — submit that URL in Google Search Console and Bing Webmaster Tools. No visitor-facing UI; the product is reliable sitemap XML under your control.
-
-- **Dashboard** — URL totals, last run, next scheduled rebuild, one-click **Generate Now**.
-- **Manage Content** — checkbox grids for post types, taxonomies, and author archives.
-- **URL List** — searchable flat table of every URL in the current file.
-- **Blacklist** — exclude posts by ID, URL, or live search.
-- **File Editor** — edit `robots.txt`, `.htaccess`, and the generated XML with automatic backup before save.
-- **Settings** — auto-generate on/off, hourly-to-weekly schedule, default priority and change frequency.
-- **Statistics** — breakdown by URL type and recent activity snapshot.
-- **Test & Verify** — HTTP check and XML validation on the live sitemap URL.
-- **Activity Log** — who generated, blacklisted, or edited files.
+A growing WordPress site needs a clear way to decide which content belongs in its sitemap. Logic Encoder Sitemap Manager gives the site owner control over inclusion, exclusions and update schedules in one administration area, helping keep discovery information aligned with the site.
 
 ## Tech stack
 
 | Layer | Technologies |
-|-------|--------------|
-| WordPress plugin | PHP single-file (`logicencoder-sitemap-manager.php`, v2.0.x) |
-| Persistence | WordPress options |
-| Output | `sitemap-generated.xml` at site root |
-| Admin UI | Nine wp-admin screens + dashboard widget |
-| Scheduling | Optional automatic regeneration on a chosen interval |
-| Hosting | WordPress on shared hosting; administrator-only menus |
+|---|---|
+| Application | PHP, WordPress |
+| Supporting technologies | XML; JavaScript |
 
-## Dashboard
+## Choose the content that belongs
 
-**Sitemap Manager → Dashboard** is the home screen after activation.
+Select the published content types and archive areas that should appear. Posts, pages and supported site content can be managed together, making it easier to include useful material without treating every URL the same. The result is a sitemap that reflects the site's publishing choices.
 
-Stat cards show **total URLs**, how many **content types** are enabled, **blacklisted** item count, and **time since last generation**. A cron table lists whether auto-generate is on, the schedule label, and the **next run** datetime. When the file exists, a info block shows the public URL, file size, and last modified time.
+## Exclude content deliberately
 
-| Button | Result |
-|--------|--------|
-| **Generate Now** | Rebuilds the XML immediately (confirm dialog) |
-| **View Sitemap** | Opens the live file in a new tab |
-| **Test** | Jumps to Test & Verify |
-| **View URLs** | Opens URL List |
-| **Configure Cron** | Opens Settings |
+A blacklist gives the owner a direct way to leave selected posts out. This is useful for content that exists for a specific purpose but should not be promoted through the sitemap. Review exclusions when the content's role changes rather than relying on an accidental omission.
 
-On first activation the plugin builds an initial sitemap and links you back here.
+## Control update preferences
 
-On first publish to Search Console: activate → open Dashboard → **Generate Now** → **View Sitemap** → copy the URL into Google Search Console → add the same line to `robots.txt` in File Editor.
+Set the preferred update schedule and sitemap hints from the settings screen. Regenerate when a publishing change needs to be reflected, or use scheduled updates for routine maintenance. These controls reduce repeated manual work as the site grows.
 
-## Manage Content
+## Inspect the output
 
-**Manage Content** is where you choose what enters the next build.
+The generated XML provides a way to check the result of the selected settings. Review it alongside the administration choices when a page appears to be missing or unexpectedly included. The image below illustrates the output; an administration screenshot would make the editing experience clearer.
 
-Two checkbox grids list every **public post type** and **public taxonomy** (categories, tags, custom). Toggle **Include author archive pages** for `/author/` URLs. **Save Settings** stores choices — run **Generate Now** on the Dashboard (or wait for auto-generate) to refresh the file.
+## Keep discovery work organised
 
-Defaults on a fresh install: **Posts** and **Pages** on; **Categories** on; author archives off.
-
-To add a custom post type, tick the CPT label → **Save Settings** → Dashboard → **Generate Now** → URL List → filter by type to confirm new archive URLs appeared.
-
-## URL List
-
-**URL List** is the audit view of the current sitemap.
-
-When no file exists yet, an empty state links to Dashboard. After generation, a filter bar and table list every URL with **type badge**, **priority**, **last modified**, and a **View** link that opens the live page. Header shows total count.
-
-| Control | Use |
-|---------|-----|
-| **Filter by type** | Homepage, Posts, Pages, Categories, Tags, Authors, or All |
-| **Search URLs** | Live text filter on the URL column |
-| **Print** | Browser print of the filtered table |
-
-To confirm a landing page is indexed, search the slug → open **View** → if missing, check Manage Content and Blacklist, then regenerate.
-
-## Blacklist
-
-**Blacklist** keeps specific posts out of the XML even when their post type is enabled.
-
-Add by **numeric post ID**, by **pasting a full post URL**, or via **Search & Add** (type two or more characters, pick **Blacklist** on a result). The table shows ID, title, type, link, and **Remove**. Blacklisted items stay out until removed and the sitemap is regenerated.
-
-To hide a staging page, open Blacklist → search the page title → **Blacklist** → Dashboard → **Generate Now** → URL List search proves the URL is gone.
-
-## File Editor
-
-**File Editor** edits site-root files in one place:
-
-| Tab | File |
-|-----|------|
-| **robots.txt** | Crawler rules — add `Sitemap: https://logicencoder.com/sitemap-generated.xml` |
-| **.htaccess** | Server rules (edit with care) |
-| **sitemap-generated.xml** | Raw XML preview/edit |
-
-Switch tabs, edit the textarea, toggle **Dark Mode** (preference remembered), **Save File** writes to disk — a timestamped backup copy is created beside the original before overwrite.
-
-To wire `robots.txt` to the sitemap, open File Editor → `robots.txt` → add the `Sitemap:` line pointing at `sitemap-generated.xml` → **Save File** → Test & Verify → fetch `robots.txt`.
-
-## Settings
-
-**Settings** controls automatic rebuilds and default entry metadata.
-
-| Field | Options |
-|-------|---------|
-| **Enable automatic sitemap generation** | On / off |
-| **Regeneration schedule** | Hourly, Twice Daily, Daily, Weekly |
-| **Default priority** | 0.0–1.0 for posts and pages (homepage always highest in output) |
-| **Default change frequency** | Always, Hourly, Daily, Weekly, Monthly, Yearly, Never |
-
-**Save Settings** applies the schedule and shows the **next scheduled run** when auto-generate is on. With auto-generate enabled, publishing a post or page of an enabled type also triggers a rebuild.
-
-For daily freshness, enable auto-generate → **Daily** → **Save** → publish a new blog post → Dashboard shows an updated “last generated” time.
-
-## Statistics
-
-**Statistics** summarizes the current file: total URLs, file size, time since update, and a **URL Breakdown** table (homepage, post, page, category, tag, author, other) with counts, percentages, and progress bars. **Recent Activity** lists the last ten log entries. Empty state links to Dashboard to generate first.
-
-## Test and verify
-
-**Test & Verify** checks what crawlers will fetch.
-
-Enter any URL (defaults to the main sitemap) and **Test URL** — result panel shows HTTP status, content-type, and robots header. **Quick Tests** rows link the main sitemap, `robots.txt`, and legacy `sitemap.xml` for side-by-side checks. **Sitemap Validation** reports valid/invalid XML, URL count, or parse errors. **System Information** lists WordPress version, PHP version, site URL, and whether the site root is writable.
-
-To fix a 404 reported in Search Console, paste the failing URL → **Test URL** → if 404, fix the post or blacklist → regenerate → retest.
-
-## Activity log
-
-**Activity Log** keeps the last **100** operator events: time, user, action badge, and details. Generations, blacklist edits, settings saves, file edits, and log clears appear here. **Clear Log** wipes the table (the clear action itself is logged).
-
-## Sitemap contents
-
-Each generation writes a single XML urlset at the site root:
-
-| Content | Typical treatment |
-|---------|-------------------|
-| **Homepage** | Highest priority, marked updated daily |
-| **Published posts/pages** of enabled types | Your default priority and change frequency from Settings |
-| **Taxonomy archives** you enabled | Lower priority, weekly change frequency |
-| **Author archives** (when enabled) | Lowest priority, monthly change frequency |
-| **Blacklisted posts** | Omitted entirely |
-
-Manual **Generate Now** always available. Automatic runs follow the schedule you pick. Deactivating the plugin stops scheduled rebuilds.
-
-## WordPress dashboard widget
-
-The home **Dashboard** widget **Sitemap Manager Status** shows URL count, last generated time, next scheduled run, and links **View Dashboard** / **Generate now** — regenerate without opening the full menu.
-
-Private code: [logicencoder/logicencoder-sitemap-manager-plugin](https://github.com/logicencoder/logicencoder-sitemap-manager-plugin) (v2.0.x)
-
-Complements [le-settings-plugin-overview](https://github.com/logicencoder/le-settings-plugin-overview) for site meta and robots allow rules.
-
-See [REPOS.md](REPOS.md).
+The plugin focuses on sitemap management as a distinct publishing task. It can sit beside the site's other SEO controls, giving the owner a clear place to maintain this part of discovery without scattering the decisions across several tools.
 
 ---
 
-## Operator workflows
+Private code: [logicencoder-sitemap-manager-plugin](https://github.com/logicencoder/logicencoder-sitemap-manager-plugin)
 
-#### Dashboard home (operator)
-1. You open **Sitemap Manager → Dashboard** and read total URLs, enabled content types, and time since last generation.
-2. You click **Generate Now** after changing site structure and confirm stat cards update with the new URL total.
+See [REPOS.md](REPOS.md) for related repositories.
 
-#### Manage Content inclusion (operator)
-1. You tick which post types and taxonomies belong in the next build and save before you regenerate.
-2. You enable **author archive pages** when you want `/author/` URLs indexed and disable them when they add noise.
-
-#### URL List audit (operator)
-1. You filter the flat URL table by type or search slug text to confirm a landing page made it into the current file.
-2. You click **View** on a row to open the live page and verify it matches what you expect crawlers to fetch.
-
-#### Blacklist exclusions (operator)
-1. You blacklist a staging page by ID or URL paste so it never appears in the XML even if its post type is enabled.
-2. You remove a blacklist row and regenerate when a previously hidden page is ready for indexing.
-
-#### File Editor (operator)
-1. You add `Sitemap: https://logicencoder.com/sitemap-generated.xml` to **robots.txt** and save with automatic backup.
-2. You switch to the **sitemap-generated.xml** tab to inspect raw urlset output before submitting to Search Console.
-
-#### Settings and auto-generate (operator)
-1. You enable automatic regeneration on **Daily** and read the **next scheduled run** timestamp on save.
-2. You set default **priority** and **change frequency** for posts so new content inherits sensible crawler hints.
-
-#### Statistics and Test & Verify (operator)
-1. You open **Statistics** and read URL breakdown by homepage, posts, pages, tags, and authors.
-2. You paste the live sitemap URL into **Test & Verify** and confirm HTTP 200, content-type, and valid XML parsing.
-
-#### Activity log (operator)
-1. You review who generated, blacklisted, edited files, or cleared logs in the last **100** events.
-2. You correlate log entries with Search Console crawl errors after a structural site change.
-
-#### Dashboard widget (operator)
-1. You read **Sitemap Manager Status** on the wp-admin home screen for URL count and last generated time.
-2. You click **Generate now** from the widget during a quick content push without opening the full Dashboard.
-
-#### Search-engine discovery (outcome)
-1. You submit **sitemap-generated.xml** in Google Search Console and Bing Webmaster Tools after a major publish batch.
-2. You publish a new post of an enabled type with auto-generate on and verify the URL appears in **URL List** after the scheduled rebuild.
-
-
----
-
-**Made by [Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
+**[Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
