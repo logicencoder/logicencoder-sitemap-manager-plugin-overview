@@ -25,7 +25,7 @@ Set the preferred update schedule and sitemap hints from the settings screen. Re
 
 ## Inspect the output
 
-The generated XML provides a way to check the result of the selected settings. Review it alongside the administration choices when a page appears to be missing or unexpectedly included. The image below illustrates the output; an administration screenshot would make the editing experience clearer.
+The generated XML provides a way to check the result of the selected settings. Review it alongside the administration choices when a page appears to be missing or unexpectedly included.
 
 ## Keep discovery work organised
 
