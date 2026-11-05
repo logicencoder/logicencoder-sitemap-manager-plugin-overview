@@ -50,7 +50,7 @@ The Activity Log records each action with its time, the user who performed it an
 
 ## Scope and limits
 
-The plugin writes the standard sitemap fields. Google states in its sitemap documentation that it ignores the priority and change-frequency values, and uses the last-modification date only when it is consistently accurate, so keep that date truthful. Google also retired its sitemap ping endpoint in 2023 and Bing removed anonymous sitemap submission in 2022; today search engines learn about a sitemap from the `robots.txt` entry and from Search Console, not from a ping. Treat the dashboard's search-engine ping action as legacy.
+The plugin writes the standard sitemap fields. Last-modification dates come from the content itself (a post's own modification time, and for the homepage, a category or an author page, the newest published item they list), and the field is left out when no date is known, because Google uses it only when it is consistently accurate. Google ignores the priority and change-frequency values, which the plugin still writes for other consumers. Google retired its sitemap ping endpoint in 2023 and Bing removed anonymous sitemap submission in 2022, so the dashboard no longer pings anyone: its search-engine action checks whether `robots.txt` lists the sitemap and points to Google Search Console and Bing Webmaster Tools for submission.
 
 ---
 
