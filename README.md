@@ -1,46 +1,56 @@
 # Logic Encoder Sitemap Manager
 
-![Logic Encoder Sitemap Manager workspace](assets/sitemap-manager-xml.png)
+![Sitemap Manager dashboard](assets/sitemap-manager-xml.png)
 
-A growing WordPress site needs a clear way to decide which content belongs in its sitemap. Logic Encoder Sitemap Manager gives the site owner control over inclusion, exclusions and update schedules in one administration area, helping keep discovery information aligned with the site.
+A growing WordPress site needs a clear way to decide which pages belong in its XML sitemap and to check that the file really says what the owner intended. Logic Encoder Sitemap Manager is a WordPress administration area for exactly that: choose the content types, taxonomies and authors that are included, keep individual posts out through a blacklist, regenerate the file on a schedule or on demand, and test the result without leaving the dashboard. It is built for site owners and editors who want the sitemap under their own control instead of leaving it to defaults.
 
 ## Tech stack
 
 | Layer | Technologies |
 |---|---|
-| Application | PHP, WordPress |
-| Supporting technologies | XML; JavaScript |
+| Plugin | PHP, WordPress administration pages, WP-Cron for scheduled regeneration |
+| Interface | JavaScript with WordPress AJAX actions for generate, search, test, bulk edit and import or export |
+| Output | Static XML sitemap in the standard urlset format with location, last modification, change frequency and priority |
 
-## Choose the content that belongs
+## Dashboard
 
-Select the published content types and archive areas that should appear. Posts, pages and supported site content can be managed together, making it easier to include useful material without treating every URL the same. The result is a sitemap that reflects the site's publishing choices.
+The Dashboard is the starting screen. Quick actions generate the sitemap immediately, and a cron status block shows whether automatic generation is on, the schedule and the time of the next run. A sitemap information block shows the sitemap address, the size of the generated file and when it was last modified, so the first glance answers whether the file is current.
 
-A sitemap should represent the content the owner intends to publish for discovery. Grouping those choices in one area makes them easier to review as the site's content expands.
+## Manage Content
 
-## Exclude content deliberately
+Manage Content decides what the sitemap contains. Switches cover each public post type, each taxonomy (categories, tags and any custom ones) and the author archives. Turning a group off removes all its URLs at the next generation, which suits a site that, for example, wants posts and pages listed but not tag archives.
 
-A blacklist gives the owner a direct way to leave selected posts out. This is useful for content that exists for a specific purpose but should not be promoted through the sitemap. Review exclusions when the content's role changes rather than relying on an accidental omission.
+## URL List
 
-An explicit exclusion is easier to revisit than a page that is missing for an unknown reason. Keep the exclusion list connected to the content's current publishing role.
+The URL List shows every URL the sitemap will contain. A type filter narrows it to the homepage, posts, pages, categories, tags or authors, and each row shows the URL, its type, its priority and the actions available for it. Use it to answer "is this page in the sitemap" and to find entries that should not be there.
 
-## Control update preferences
+## Blacklist
 
-Set the preferred update schedule and sitemap hints from the settings screen. Regenerate when a publishing change needs to be reflected, or use scheduled updates for routine maintenance. These controls reduce repeated manual work as the site grows.
+The Blacklist keeps chosen content out. Add an item by post ID, by full URL or by searching for it by title and adding it from the results; the current blacklist lists every excluded item and lets you remove it again. Bulk actions handle several selections at once. An explicit exclusion is easier to revisit than a page that is missing for an unknown reason.
 
-Manual regeneration is useful after a deliberate change, while a schedule supports routine updates. The owner can choose the pattern that fits how the site is maintained.
+## Settings
 
-## Inspect the output
+Settings control how often the sitemap is regenerated (hourly, twice daily, daily or weekly; the default is daily) and the default priority and change frequency written for URLs (the default change frequency is weekly). The whole configuration can be exported to a file and imported again, which makes it easy to move the same setup to another site or to restore it.
 
-The generated XML provides a way to check the result of the selected settings. Review it alongside the administration choices when a page appears to be missing or unexpectedly included.
+## Statistics
 
-The output provides the observable result of the configuration. Checking a particular inclusion or exclusion there helps connect an administration choice with the published sitemap.
+Statistics breaks the sitemap down by URL type: for each of the homepage, posts, pages, categories, tags and authors it shows the count, the share of the whole and a progress bar, and below it a list of recent generation activity with time and details. It shows at a glance whether the proportions look right, for instance when archive pages outnumber real content, and it is the quickest check after switching a group on or off in Manage Content.
 
-## Keep discovery work organised
+## Test and Verify
 
-The plugin focuses on sitemap management as a distinct publishing task. It can sit beside the site's other SEO controls, giving the owner a clear place to maintain this part of discovery without scattering the decisions across several tools.
+Test and Verify checks the published result. Enter a sitemap address to test, run the quick tests, and review the sitemap validation. A system information table lists the WordPress and PHP versions, the site address, the server and whether the target folders are writable, which is the first place to look when generation fails.
 
-A dedicated sitemap workspace gives this recurring task a clear home. It complements other site tools while keeping content inclusion and output inspection together.
+## File Editor
 
+The File Editor edits `robots.txt` and `.htaccess` from the same area, with a selectable editor theme. The sitemap address is normally announced to search engines in `robots.txt`, so the editor puts that line one click away from the sitemap itself. Both files affect the whole site; copy the current content before changing it.
+
+## Activity Log
+
+The Activity Log records each action with its time, the user who performed it and the details, for example a generation run, a bulk blacklist of several posts or a settings import. When a page is missing or unexpectedly present, read the log from the top: the most recent change that touched the content type, the blacklist or the settings is usually the cause, and the user column shows who made it.
+
+## Scope and limits
+
+The plugin writes the standard sitemap fields. Google states in its sitemap documentation that it ignores the priority and change-frequency values, and uses the last-modification date only when it is consistently accurate, so keep that date truthful. Google also retired its sitemap ping endpoint in 2023 and Bing removed anonymous sitemap submission in 2022; today search engines learn about a sitemap from the `robots.txt` entry and from Search Console, not from a ping. Treat the dashboard's search-engine ping action as legacy.
 
 ---
 
