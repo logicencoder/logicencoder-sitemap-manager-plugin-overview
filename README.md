@@ -1,6 +1,6 @@
 # Logic Encoder Sitemap Manager
 
-![Sitemap Manager dashboard](assets/sitemap-manager-xml.png)
+![Sitemap Manager dashboard](assets/logicencoder-sitemap-manager-sitemap-manager-xml.png)
 
 A growing WordPress site needs a clear way to decide which pages belong in its XML sitemap and to check that the file really says what the owner intended. Logic Encoder Sitemap Manager is a WordPress administration area for exactly that: choose the content types, taxonomies and authors that are included, keep individual posts out through a blacklist, regenerate the file on a schedule or on demand, and test the result without leaving the dashboard. It is built for site owners and editors who want the sitemap under their own control instead of leaving it to defaults.
 
